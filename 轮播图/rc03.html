@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 150px;
+				/* overflow: hidden; */
+				position: relative;
+				border: 1px solid red;
+			}
+			img{
+				width: 200px;
+				height: 150px;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			//加载完成事件
+			onload = function(){
+				//获取所有图片
+				var imgs = document.getElementsByTagName("img");
+				//遍历所有图片
+				for(var i = 0;i<imgs.length;i++){
+					//得到所有图片
+					var img = imgs[i];
+					//修改图片的位置
+					img.style.top="0";
+					img.style.left=i*200+"px";
+				}
+			}
+			//开启定时器每隔一段时间移动一张图片
+			setInterval(movefn,3000);
+			//创建移动一张图片的方法
+			function movefn(){
+			//开启移动图片的定时器
+			var moveId = setInterval(function(){
+				//获取所有图片
+				var imgs = document.getElementsByTagName("img");
+				//遍历所有图片
+				for(var i = 0;i<imgs.length;i++){
+					//得到所有图片
+					var img = imgs[i];
+					//得到原来的位置
+					var oldleft=parseFloat(img.style.left);
+					//向左移动
+					oldleft-=2;
+					//图片复原
+					if(oldleft<=-200){
+						oldleft=400;
+						//停止定时器
+						clearInterval(moveId);
+					}
+					//赋值回去
+					img.style.left=oldleft+"px";
+					}
+			},10);
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="imgs/01.jpg" >
+			<img src="imgs/02.jpg" >
+			<img src="imgs/03.jpg" >
+		</div>
+	</body>
+</html>

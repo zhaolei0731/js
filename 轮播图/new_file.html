@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				border: #9370DB 1px solid;
+				width: 200px;
+				height: 150px;
+				overflow: hidden;
+				position: relative;
+			}
+			img{
+				width: 200px;
+				height: 150px;
+				position: absolute;
+				cursor:pointer;
+			}
+		</style>
+		<script type="text/javascript">
+			onload=function(){
+				var imgs = document.getElementsByTagName("img");
+				for(var i=0;i<imgs.length;i++){
+					var img = imgs[i];
+					img.style.left=i*200+"px";
+				}
+			}
+			var move = setInterval(cy,3000)
+			function cy(){
+			var y = setInterval(function(){
+				var imgs=document.getElementsByTagName("img")
+				for(var i=0;i<imgs.length;i++){
+					var img = imgs[i];
+					var oldleft = parseFloat(img.style.left);
+					oldleft-=2;
+					if(oldleft<=-200){
+						oldleft=400;
+						clearInterval(y)
+					}
+					img.style.left=oldleft+"px";
+				}
+			},10)}
+			function stop(){
+				clearInterval(move);
+				
+			}
+			function start(){
+				clearInterval(move)
+				move = setInterval(cy,3000);
+			}
+			onblur = function(){
+				stop();
+			}
+			onfocus = function(){
+				start();
+			}
+		</script>
+	</head>
+	<body>
+		<div id="" onmouseover="stop()" onmouseout="start()">
+			<a href="https://www.weibo.com"><img src="imgs/01.jpg" ></a>
+			<a href="https://www.baidu.com"><img src="imgs/02.jpg" ></a>
+			<a href="https://www.taobao.com"><img src="imgs/03.jpg" ></a>
+		</div>
+	</body>
+</html>

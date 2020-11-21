@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 150px;
+				border: 1px solid red;
+				position: relative;
+			}
+			img{
+				width: 200px;
+				height: 150px;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			//加载完成事件
+			onload=function(){
+				//得到所有图片
+				var imgs = document.getElementsByTagName("img");
+				//遍历图片
+				for(var i =0;i<imgs.length;i++){
+					//得到图片
+					var img = imgs[i];
+					//修改图片位置
+					img.style.top=0;
+					img.style.left=i*200+"px";
+				}
+				}
+				//开启图片移动的定时器
+				setInterval(function(){
+					//获取所有图片
+					var imgs = document.getElementsByTagName("img");
+					//遍历图片
+					for(var i =0;i<imgs.length;i++){
+						//得到图片
+						var img = imgs[i];
+						//得到原来的位置
+						var oldleft = parseFloat(img.style.left);
+						//向左移动图片
+						oldleft-=2;
+						//赋值回去 因为变成像素距离才能移动
+						img.style.left = oldleft+"px";
+				}
+			},10)
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="imgs/01.jpg" >
+			<img src="imgs/02.jpg" >
+			<img src="imgs/03.jpg" >
+		</div>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 150px;
+				border: 1px solid red;
+				position: relative;/*必须给父级加相对定位*/
+			}
+			img{
+				width: 200px;
+				height: 150px;
+				position: absolute;/*绝对定位*/
+			}
+		</style>
+		<script type="text/javascript">
+			//加载完成事件
+			onload = function(){
+				//得到页面中的所有图片
+				var imgs = document.getElementsByTagName("img");
+				//验证图片数量
+				// alert(imgs.length);
+				//遍历图片
+				for(var i = 0;i<imgs.length;i++){
+					//得到图片
+					var img = imgs[i];
+					//修改图片的位置
+					img.style.top="0";
+					img.style.left=i*200+"px";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="imgs/01.jpg" >
+			<img src="imgs/02.jpg" >
+			<img src="imgs/03.jpg" >
+		</div>
+	</body>
+</html>
